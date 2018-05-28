@@ -1,0 +1,17 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[requires]
+python_version = "3.5"
+
+[packages]
+redis = "*"
+requests = "*"
+flask = "*"
+aiohttp = "*"
+async-timeout = "==2.0.1"
+pyquery = "*"
+
+[dev-packages]
