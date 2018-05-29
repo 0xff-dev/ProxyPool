@@ -20,4 +20,4 @@
 ![api-count](./pp/images/count.png)
 
 ### api-random
-![api-random]('./pp/images/random.png')
+![api-random](./pp/images/random.png)
