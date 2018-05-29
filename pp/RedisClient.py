@@ -3,9 +3,9 @@
 
 import redis
 from random import choice
-from pp.Error import PoolEmptyError
-from pp.settings import MAX_SCORE, MIN_SCORE, INITIAL_SCORE
-from pp.settings import REDIS_HOST, REDIS_PORT, REDIS_KEY, REDIS_PASSWORD
+from Error import PoolEmptyError
+from settings import MAX_SCORE, MIN_SCORE, INITIAL_SCORE
+from settings import REDIS_HOST, REDIS_PORT, REDIS_KEY, REDIS_PASSWORD
 
 
 # Redis的api请参考    http://redisdoc.com/
@@ -21,7 +21,7 @@ class RedisClient(object):
         :param password Redis 密码
         '''
         self.db = redis.StrictRedis(host=host, port=port, 
-                password=password,decode_respones=True)
+                password=password,decode_responses=True)
 
     def add(self, proxy, score=INITIAL_SCORE):
         '''
@@ -49,7 +49,7 @@ class RedisClient(object):
         一个proxy测试失败一次，分数-1,直到咯屁
         '''
         score = self.db.zscore(REDIS_KEY, proxy)
-        if score and scroe > MIN_SCORE:
+        if score and score > MIN_SCORE:
             print ('代理:{}, 当前分数: {}-1'.format(proxy, score))
             self.db.zincrby(REDIS_KEY, proxy, -1)
         else:
