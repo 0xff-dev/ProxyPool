@@ -9,3 +9,15 @@
 ##  Python协程
 [协程的讲解](http://python.jobbole.com/87310/)
 
+## ScreenShot
+### 抓取Ip
+![抓取Ip](./pp/images/ip.png)
+
+### 测试IP
+![测试IP](./pp/images/test-ip.png)
+
+### api-count
+![api-count](./pp/images/count.png)
+
+### api-random
+![api-random]('./pp/images/random.png')
