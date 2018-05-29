@@ -11,7 +11,7 @@ class ProxyMetaClass(type):
 
     def __new__(cls, name, bases, attrs):
         count = 0
-        attrs = ['__CrawlFunc__'] = []
+        attrs['__CrawlFunc__'] = []
         for key, value in attrs.items():
             if 'crawl_' in key:
                 attrs['__CrawlFunc__'].append(key)
@@ -33,9 +33,9 @@ class Crawler(object, metaclass=ProxyMetaClass):
         '''
         获取代理66
         '''
-        url = 'https://66ip.cn/{}.html'
+        t_url = 'https://www.66ip.cn/{}.html'
         # 抓取4页
-        urls = [url.format(page) for page in range(1, page_count+1)]
+        urls = [t_url.format(page) for page in range(1, page_count+1)]
         for url in urls:
             print ('Crawing', url)
             html = get_page(url)
@@ -59,13 +59,13 @@ class Crawler(object, metaclass=ProxyMetaClass):
     
     def crawl_kuaidaili(self):
         for page in range(1, 5):
-            start_url = 'https://www.kuaidaili.com/free/inha/{}/'.format(i)
+            start_url = 'https://www.kuaidaili.com/free/inha/{}/'.format(page)
             html = get_page(start_url)
             if html:
                 ip_address = re.compile('<td data-title="IP">(.*?)</td>')
                 re_ip_address = ip_address.findall(html) 
                 port = re.compile('<td data-title="PORT">(.*?)</td>')
-                re_port port.findall(html)
+                re_port = port.findall(html)
                 for address, port in zip(re_ip_address, re_port):
                     address_port = address+':'+port
                     yield address_port.replace(' ', '')
