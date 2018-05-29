@@ -11,8 +11,8 @@ except:
     from aiohttp import ClientProxyConnectionError as ProxyConnectionError
 
 
-from  pp.RedisClient import RedisClient
-from pp.settings import *
+from  RedisClient import RedisClient
+from settings import *
 
 
 class Tester(object):
@@ -29,15 +29,15 @@ class Tester(object):
                 real_proxy = 'http://'+proxy
                 print ('测试代理: {}'.format(real_proxy))
                 async with session.get(TEST_URL, proxy=real_proxy, 
-                        allow_redirect=False) as resp:
+                        allow_redirects=False, timeout=10) as resp:
                     if resp.status in VALID_STATUS_CODE:
                         self.redis.max(proxy)
                         print ('代理{} 可用'.format(real_proxy))
                     else:
                         self.redis.decrase(proxy)
                         print ('代理{}的返回状态错误'.format(real_proxy))
-            except (ClientError, aiohttp.client_exceptions, 
-                    ClientConnectionError, asyncio.TimeoutError, AttributeError):
+            except (ClientError, aiohttp.client_exceptions.ClientConnectorError, 
+                    asyncio.TimeoutError, AttributeError):
                 self.redis.decrase(proxy)
                 print ("代理{}请求异常".format(real_proxy))
 
