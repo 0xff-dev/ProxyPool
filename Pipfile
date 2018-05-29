@@ -13,5 +13,6 @@ flask = "*"
 aiohttp = "*"
 async-timeout = "==2.0.1"
 pyquery = "*"
+gevent = "*"
 
 [dev-packages]
