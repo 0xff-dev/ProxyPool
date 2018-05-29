@@ -2,7 +2,7 @@
 # coding=utf-8
 
 from flask import Flask
-from pp.RedisClient imprt RedisClient
+from RedisClient import RedisClient
 
 
 __all__ = ['app']
