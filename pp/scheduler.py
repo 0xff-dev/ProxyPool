@@ -4,10 +4,10 @@
 
 import time
 from multiprocessing import Process
-from pp.getter import Getter
-from pp.tester import Tester
-from pp.RedisClient import RedisClient
-from pp import settings
+from getter import Getter
+from tester import Tester
+from RedisClient import RedisClient
+import settings
 
 
 class Scheduler():
