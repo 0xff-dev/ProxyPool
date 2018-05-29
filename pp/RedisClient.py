@@ -5,7 +5,7 @@ import redis
 from random import choice
 from pp.Error import PoolEmptyError
 from pp.settings import MAX_SCORE, MIN_SCORE, INITIAL_SCORE
-from pp.settings import REDIS_HSOT, REDIS_PORT, REDIS_KEY, REDIS_PASSWORD
+from pp.settings import REDIS_HOST, REDIS_PORT, REDIS_KEY, REDIS_PASSWORD
 
 
 # Redis的api请参考    http://redisdoc.com/
@@ -13,7 +13,7 @@ from pp.settings import REDIS_HSOT, REDIS_PORT, REDIS_KEY, REDIS_PASSWORD
 
 class RedisClient(object):
 
-    def __init__(self, host=REDIS_HSOT, port=REDIS_PORT, password=REDIS_PASSWORD):
+    def __init__(self, host=REDIS_HOST, port=REDIS_PORT, password=REDIS_PASSWORD):
         '''
         初始化redis缓存数据库
         :param host Redis 地址
@@ -75,4 +75,7 @@ class RedisClient(object):
         返回全部的代理(后面的测试用?)
         '''
         return self.db.zrangebyscore(REDIS_KEY, MIN_SCORE, MAX_SCORE)
-
+    
+    def batch(self, start, stop):
+        return self.db.zrevrange(REDIS_KEY, start, stop-1)
+    
