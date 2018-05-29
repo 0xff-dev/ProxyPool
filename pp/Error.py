@@ -2,7 +2,7 @@
 # coding=utf-8
 
 
-class PoolEmtyError(Exception):
+class PoolEmptyError(Exception):
 
     def __init__(self):
         Exception.__init__(self)
