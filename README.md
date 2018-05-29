@@ -6,6 +6,10 @@
 3. 存储模块
 4. 接口模块
 
+## Packages
+* pipenv --three
+* pipenv install
+
 ##  Python协程
 [协程的讲解](http://python.jobbole.com/87310/)
 
