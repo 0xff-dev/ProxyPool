@@ -30,7 +30,7 @@ GETTER_CYCLE = 300
 
 
 # 测试API, 一会配置爬哪个抓那个
-
+TEST_URL = 'https://www.baidu.com'
 
 
 # API配置
